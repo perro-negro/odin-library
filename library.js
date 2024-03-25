@@ -1,22 +1,26 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read
-    this.info = function() {
+class Book{
+
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    get info() {
         let str1 = this.title + " by " + this.author + ", " + this.pages + " pages, "; 
         let str2 = '';
-        if (read) {
+        if (this.read) {
             str2 = 'Read.'
         }
         else {
             str2 = 'Not Read.'};
         return str1 + str2;    
     }
-}
 
+}
 
 const addButton = document.getElementById('addButton');
 const addWindow = document.getElementById('addWindow');
@@ -50,7 +54,7 @@ function addBookCard(book) {
     newBookTitle.className = 'bookTitle';
     newBookTitle.textContent = book.title;
     newBookInfo.className = 'infoBook';
-    newBookInfo.textContent = book.info();
+    newBookInfo.textContent = book.info;
     deleteLink.href = '#';
     deleteLink.className = 'deleteBtn';
     deleteLink.textContent = 'Delete';
@@ -80,26 +84,26 @@ confirmBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     // Get references to the input fields
-    let titleInput = document.getElementById('newBookTitle');
-    let authorInput = document.getElementById('newBookAuthor');
-    let pagesInput = document.getElementById('newBookPages');
-    let statusSelect = document.getElementById('newBookStatus');
+    let titleInput = document.getElementById('titleInput');
+    let authorInput = document.getElementById('authorInput');
+    let pagesInput = document.getElementById('pagesInput');
+    let readCheckbox = document.getElementById('readCheckbox');
 
     // Get the values from the input fields
-    let newTitle = titleInput.value;
-    let newAuthor = authorInput.value;
-    let newPages = pagesInput.value;
-    let newStatus = statusSelect.value;
+    let title = titleInput.value;
+    let author = authorInput.value;
+    let pages = pagesInput.value;
+    let read = readCheckbox.checked
 
     // Update myLibrary list
-    let newBook = new Book(newTitle,newAuthor,newPages,newStatus);
+    let newBook = new Book(title,author,pages,read);
     myLibrary.push(newBook);
 
     // clear previous values
     titleInput.value = '';
     authorInput.value = '';
     pagesInput.value = '';
-    statusSelect.value = 'default';
+    readCheckbox.checked = false;
 
     updateLibraryUI();
 
@@ -112,7 +116,12 @@ function deleteBook(number){
     updateLibraryUI();
 }
 
+
 //Stuff from the test Book.
 let hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 myLibrary.push(hobbit)
+
+let dummy = new Book('Night of the Living Dummy', 'R. L. Stine', 100, true);
+myLibrary.push(dummy)
+
 updateLibraryUI()

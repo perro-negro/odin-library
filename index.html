@@ -8,50 +8,39 @@
     <script src="library.js" defer></script>
 </head>
 <body>
-    <h1 class="title">Library</h1>
-    
-    <button id="addButton">Add Book</button>
-
-    <dialog id="addWindow" class="addWindow">
+  <h1 class="title">Library</h1>
+  <button id="addButton">Add Book</button>
+  
+  <dialog id="addWindow" class="addWindow">
     <h2>Book Information: </h2>
-        <form>
-            <p>
-                <label>
-                Title:
-                <input id="newBookTitle" type="text" size="7"/>
-                </label>
-            </p>
-            <p>
-                <label>
-                Author:
-                <input id="newBookAuthor" type="text" size="7"/>
-                </label>
-            </p>
-            <p>
-                <label>
-                Number of Pages:
-                <input id="newBookPages" type="text" size="5"/>
-                </label>
-            </p>
-            <p>
-              <label>
-                Read Status:
-                <select id="newBookStatus">
-                  <option value="default">Choose…</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </label>
-            </p>
-            <div>
-              <button value="cancel" formmethod="dialog">Cancel</button>
-              <button value="default" id="confirmBtn">Confirm</button>
-            </div>
-        </form>
-    </dialog>
+    
+    <p>
+      <label for="titleInput">Title:</label>
+      <input id="titleInput" type="text" size="7"/>
+    </p>
+    
+    <p>
+      <label for="authorInput">Author:</label>
+      <input id="authorInput" type="text" size="7"/>
+    </p>
+    
+    <p>
+      <label for="pagesInput">Number of Pages:</label>
+      <input id="pagesInput" type="text" size="5"/>            
+    </p>
 
-    <div class="container">
-      
+    <p>
+      <label for="readCheckbox">Read?:</label>
+      <input type="checkbox" id="readCheckbox"/>
+    </p>
+    
+    <div>
+    <button value="cancel" formmethod="dialog">Cancel</button>
+    <button value="default" id="confirmBtn">Confirm</button>
     </div>
+  
+  </dialog>
+
+  <div class="container"></div>
 </body>
 </html>
