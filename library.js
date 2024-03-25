@@ -2,17 +2,42 @@ let myLibrary = [];
 
 class Book{
 
+    #dTitle
+    #dAuthor
+    #dPages
+    #dRead
+
     constructor(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
+        this.#dTitle = title;
+        this.#dAuthor = author;
+        this.#dPages = pages;
+        this.#dRead = read;
+    }
+
+    get title() {
+        return this.#dTitle;
+    }
+
+    get author(){
+      return this.#dAuthor;
+    }
+
+    get pages(){
+      return this.#dPages;
+    }
+
+    get read(){
+      return this.#dRead;
+    }
+
+    set title(value) {
+        this.#dTitle = value;
     }
 
     get info() {
-        let str1 = this.title + " by " + this.author + ", " + this.pages + " pages, "; 
+        let str1 = this.#dTitle + " by " + this.#dAuthor + ", " + this.#dPages + " pages, "; 
         let str2 = '';
-        if (this.read) {
+        if (this.#dRead) {
             str2 = 'Read.'
         }
         else {
